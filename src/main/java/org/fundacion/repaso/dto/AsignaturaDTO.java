@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.fundacion.repaso.persistance.model.Alumno;
 import org.fundacion.repaso.persistance.model.Asignatura;
+import org.fundacion.repaso.persistance.model.Nota;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,12 +15,12 @@ import lombok.NoArgsConstructor;
 public class AsignaturaDTO {
     private Long id;
     private String asignaturaName;
-    private List<AlumnoDTO> alumnosMat;
+    private List<NotaDTO> notas;
 
     public AsignaturaDTO(Asignatura a) {
         this.id = a.getAsignaturaId();
         this.asignaturaName = a.getAsignaturaName();
-        this.alumnosMat = toAlumnoDTO(a.getAlumnosMatriculados());
+        this.notas = toNotasDTO(a.getNotas());
     }
 
     private List<AlumnoDTO> toAlumnoDTO(List<Alumno> alumnos) {
@@ -28,5 +29,12 @@ public class AsignaturaDTO {
             alumnosDTO.add(new AlumnoDTO(a));
         }
         return alumnosDTO;
+    }
+    private List<NotaDTO> toNotasDTO(List<Nota> notas) {
+        List<NotaDTO> notasDTO = new ArrayList<>();
+        for (Nota a : notas) {
+            notasDTO.add(new NotaDTO(a));
+        }
+        return notasDTO;
     }
 }

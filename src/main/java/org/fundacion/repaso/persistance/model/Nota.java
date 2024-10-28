@@ -33,4 +33,9 @@ public class Nota implements Serializable{
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="alumno_alumno_id", referencedColumnName = "alumno_id")
     private Alumno alumnoCalificado;
+
+    @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name="asignatura_asignatura_id", referencedColumnName = "asignatura_id")
+    private Asignatura asignaturaCalificada;
+    
 }
